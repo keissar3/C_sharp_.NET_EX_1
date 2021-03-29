@@ -4,14 +4,14 @@
 
     public class Program
     {
-        public static void Main()
+        public static void     Main()
         {
             RunBinarySeries();
             Console.WriteLine("Press Enter to exit");
             Console.ReadLine();
         }
 
-        public static void RunBinarySeries()
+        public static void     RunBinarySeries()
         {
             Console.WriteLine("Please enter three 7-digit numbers separated by a carriage return");
             string binaryNum1 = get7DigitBinaryNum();
@@ -20,7 +20,7 @@
             printBinarySeriesStatistics(binaryNum1, binaryNum2, binaryNum3);
         }
 
-        private static bool checkIfNumIsBinary(string i_BinaryNum)
+        private static bool    checkIfNumIsBinary(string i_BinaryNum)
         {
             bool isNumBinary = true;
 
@@ -35,24 +35,24 @@
             return isNumBinary;
         }
 
-        private static bool checkIfValid7DigitBinaryNum(string i_BinaryNum)
+        private static bool    checkIfValid7DigitBinaryNum(string i_BinaryNum)
         {
-            bool isNum = int.TryParse(i_BinaryNum, out _);
-            bool is7Digits = i_BinaryNum.Length == 7;
+            bool isNum = int.TryParse(i_BinaryNum, out _); //isInteger? 
+            bool is7DigitsLenght = i_BinaryNum.Length == 7;
             bool isBinaryNum = checkIfNumIsBinary(i_BinaryNum);
-            return isNum && is7Digits && isBinaryNum;
+            return isNum && is7DigitsLenght && isBinaryNum;
         }
 
-        private static string get7DigitBinaryNum()
+        private static string  get7DigitBinaryNum()
         {
             bool   validInput = false;
             string inputStringNum = string.Empty;
 
-            while (validInput == false)
+            while (!validInput)
             {
                 inputStringNum = Console.ReadLine();
                 validInput = checkIfValid7DigitBinaryNum(inputStringNum);
-                if (validInput == false)
+                if (!validInput)
                 {
                     Console.WriteLine("Invalid input, please try again");
                 }
@@ -61,25 +61,26 @@
             return inputStringNum;
         }
 
-        private static int getZerosCount(string i_Str)
+        private static int     getZerosCount(string i_Str)
         {
-            int zerosCount = 0;
+            int zerosCounter = 0;
 
             foreach (char i in i_Str)
             {
                 if (i == '0')
                 {
-                    zerosCount++;
+                    zerosCounter++;
                 }
             }
 
-            return zerosCount;
+            return zerosCounter;
         }
 
-        private static bool checkIfNumIsPowerOfTwo(int i_Num)
+        private static bool    checkIfNumIsPowerOfTwo(int i_Num)
         {
             bool isPowerOfTwo;
-            if (i_Num == 0)
+            
+            if(i_Num == 0)
             {
                 isPowerOfTwo = false;
             }
@@ -101,20 +102,21 @@
             return isPowerOfTwo;
         }
 
-        private static int countPowerOfTwo(int i_Num1, int i_Num2, int i_Num3)
+        private static int     countPowerOfTwo(int i_Num1, int i_Num2, int i_Num3)
         {
             int countPowerOfTwo = 0;
-            if (checkIfNumIsPowerOfTwo(i_Num1) == true)
+
+            if (checkIfNumIsPowerOfTwo(i_Num1))
             {
                 countPowerOfTwo++;
             }
 
-            if (checkIfNumIsPowerOfTwo(i_Num2) == true)
+            if (checkIfNumIsPowerOfTwo(i_Num2))
             {
                 countPowerOfTwo++;
             }
 
-            if (checkIfNumIsPowerOfTwo(i_Num3) == true)
+            if (checkIfNumIsPowerOfTwo(i_Num3))
             {
                 countPowerOfTwo++;
             }
@@ -122,38 +124,40 @@
             return countPowerOfTwo;
         }
 
-        private static bool checkIfAscendingSeries(int i_Num)
+        private static bool    checkIfNumIsAscendingSeries(int i_Num)
         {
             bool isAscendingSeries = true;
-            int  prevDig = 10;
+            int  previousDig = 10;
+            
             while (i_Num > 0)
             {
-                if (prevDig <= i_Num % 10)
+                if (previousDig <= i_Num % 10)
                 {
                     isAscendingSeries = false;
                 }
 
-                prevDig = i_Num % 10;
+                previousDig = i_Num % 10;
                 i_Num /= 10;
             }
 
             return isAscendingSeries;
         }
 
-        private static int countAscendingSeries(int i_Num1, int i_Num2, int i_Num3)
+        private static int     countAscendingSeries(int i_Num1, int i_Num2, int i_Num3)
         {
             int countAscendingSeries = 0;
-            if (checkIfAscendingSeries(i_Num1) == true)
+            
+            if (checkIfNumIsAscendingSeries(i_Num1))
             {
                 countAscendingSeries++;
             }
 
-            if (checkIfAscendingSeries(i_Num2) == true)
+            if (checkIfNumIsAscendingSeries(i_Num2))
             {
                 countAscendingSeries++;
             }
 
-            if (checkIfAscendingSeries(i_Num3) == true)
+            if (checkIfNumIsAscendingSeries(i_Num3))
             {
                 countAscendingSeries++;
             }
@@ -161,9 +165,11 @@
             return countAscendingSeries;
         }
 
-        private static void printBinarySeriesStatistics(string i_BinaryNum1, string i_BinaryNum2, string i_BinaryNum3)
+        private static void    printBinarySeriesStatistics(string i_BinaryNum1, string i_BinaryNum2, string i_BinaryNum3)
         {
-            int       decimalNum1 = convertBinaryToDecimal(int.Parse(i_BinaryNum1)), decimalNum2 = convertBinaryToDecimal(int.Parse(i_BinaryNum2)), decimalNum3 = convertBinaryToDecimal(int.Parse(i_BinaryNum3));
+            int       decimalNum1 = convertBinaryToDecimal(int.Parse(i_BinaryNum1));
+            int       decimalNum2 = convertBinaryToDecimal(int.Parse(i_BinaryNum2));
+            int       decimalNum3 = convertBinaryToDecimal(int.Parse(i_BinaryNum3));
             int       powerOfTwoCount = countPowerOfTwo(decimalNum1, decimalNum2, decimalNum3);
             int       ascendingSeriesCount = countAscendingSeries(decimalNum1, decimalNum2, decimalNum3);
             int       totalZerosCount = getZerosCount(i_BinaryNum1) + getZerosCount(i_BinaryNum2) + getZerosCount(i_BinaryNum3);
@@ -180,7 +186,7 @@
             Console.WriteLine("The largest number is {0}, and the smallest number is {1} ", maxDecimalNum, minDecimalNum);
         }
 
-        private static int convertBinaryToDecimal(int i_Num)
+        public static int     convertBinaryToDecimal(int i_Num)
         {
             int decimalNum = 0;
             int i = 0;

@@ -4,19 +4,19 @@
 
     public class Program
     {
-        public static void Main()
+        public static void    Main()
         {
             HourGlass();
             Console.WriteLine("Press Enter to exit");
             Console.ReadLine();
         }
 
-        public static void HourGlass(int i_HourGlassHeight = 5)
+        public static void    HourGlass(int i_HourGlassHeight = 5)
         {
             hourGlassRecursive(i_HourGlassHeight, i_HourGlassHeight);
         }
 
-        private static void printCharRow(char i_CharToPrint, int i_TimesToPrint)
+        private static void   printCharRow(char i_CharToPrint, int i_TimesToPrint)
         {
             for (int j = 0; j < i_TimesToPrint; j++)
             {
@@ -24,9 +24,10 @@
             }
         }
 
-        private static void hourGlassRecursive(int i_HourGlassHeight, int i_MaxRowWidth)
+        private static void   hourGlassRecursive(int i_HourGlassHeight, int i_MaxRowWidth)
         {
             int spacesPaddingNeeded = (i_MaxRowWidth - i_HourGlassHeight) / 2;
+         
             if (i_HourGlassHeight == 1)
             {
                 printHourGlassSection(spacesPaddingNeeded, i_HourGlassHeight);
@@ -39,7 +40,7 @@
             }
         }
 
-        private static void printHourGlassSection(int i_SpacesPaddingNeeded, int i_HourGlassHeight)
+        private static void   printHourGlassSection(int i_SpacesPaddingNeeded, int i_HourGlassHeight)
         {
             printCharRow(' ', i_SpacesPaddingNeeded);
             printCharRow('*', i_HourGlassHeight);
