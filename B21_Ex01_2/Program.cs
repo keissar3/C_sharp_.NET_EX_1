@@ -1,6 +1,7 @@
 ﻿namespace B21_Ex01_2
 {
     using System;
+    using System.Text;
 
     public class Program
     {
@@ -16,12 +17,16 @@
             hourGlassRecursive(i_HourGlassHeight, i_HourGlassHeight);
         }
 
-        private static void   printCharRow(char i_CharToPrint, int i_TimesToPrint)
+        private static StringBuilder printCharRow(char i_CharToPrint, int i_TimesToPrint)
         {
+            StringBuilder outputString = new StringBuilder(string.Empty, i_TimesToPrint);
+
             for (int j = 0; j < i_TimesToPrint; j++)
             {
-                Console.Write(i_CharToPrint);
+                outputString.Append(i_CharToPrint);
             }
+             
+            return outputString;
         }
 
         private static void   hourGlassRecursive(int i_HourGlassHeight, int i_MaxRowWidth)
@@ -42,10 +47,12 @@
 
         private static void   printHourGlassSection(int i_SpacesPaddingNeeded, int i_HourGlassHeight)
         {
-            printCharRow(' ', i_SpacesPaddingNeeded);
-            printCharRow('*', i_HourGlassHeight);
-            printCharRow(' ', i_SpacesPaddingNeeded);
-            Console.Write(Environment.NewLine);
+            StringBuilder outStringBuilder = new StringBuilder(string.Empty, i_HourGlassHeight);
+            outStringBuilder.Append(printCharRow(' ', i_SpacesPaddingNeeded));
+            outStringBuilder.Append(printCharRow('*', i_HourGlassHeight));
+            outStringBuilder.Append(printCharRow(' ', i_SpacesPaddingNeeded));
+            outStringBuilder.Append(System.Environment.NewLine);
+            Console.Write(outStringBuilder);
         }
     }
 }
