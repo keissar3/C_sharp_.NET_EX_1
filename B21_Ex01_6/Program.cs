@@ -18,26 +18,27 @@
             int inputNumber = getInputNumberFromUser();
             printBiggestAndLowestDigitInNumber(inputNumber);
             printDigitDividedBy3Count(inputNumber);
-            printHowMuchDigitAreBiggerThanTheUnityDigit(inputNumber);
+            printHowManyDigitAreBiggerThanTheUnitsDigit(inputNumber);
         }
 
-        private static void   printHowMuchDigitAreBiggerThanTheUnityDigit(int i_InputNumber)
+        private static void     printHowManyDigitAreBiggerThanTheUnitsDigit(int i_InputNumber)
         {
-            int counterDigitBiggerThanUnityDigit = 0, unityDigit = i_InputNumber % 10;
+            int counterDigitBiggerThanUnitsDigit = 0, unitsDigit = i_InputNumber % 10;
 
             while (i_InputNumber > 0)
             {
                 int currentDigit = i_InputNumber % 10;
 
-                if (currentDigit > unityDigit)
+                if (currentDigit > unitsDigit)
                 {
-                    counterDigitBiggerThanUnityDigit++;
+                    counterDigitBiggerThanUnitsDigit++;
                 }
 
                 i_InputNumber /= 10;
             }
 
-            Console.WriteLine("There are {0} digits in the number that are bigger than the unity digit ", counterDigitBiggerThanUnityDigit);
+            string outputString = string.Format("There are {0} digits in the number that are bigger than the units digit ", counterDigitBiggerThanUnitsDigit);
+            Console.WriteLine(outputString);
         }
 
         private static void   printDigitDividedBy3Count(int i_InputNumber)
@@ -56,8 +57,9 @@
                 i_InputNumber /= 10;
             }
 
-            Console.WriteLine("There is {0} digits in the number that can be divided by 3", counterDigitDividedBy3 + 6 - counterOfDigit);
-        }
+            string outputString = string.Format("There is {0} digits in the number that can be divided by 3", counterDigitDividedBy3 + 6 - counterOfDigit);
+            Console.WriteLine(outputString);
+        } 
 
         private static void   printBiggestAndLowestDigitInNumber(int i_InputNumber)
         {

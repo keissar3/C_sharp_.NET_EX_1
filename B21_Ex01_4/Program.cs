@@ -59,7 +59,8 @@
                 }
             }
 
-            Console.WriteLine("There is a {0} uppercase in the string", counterOfUppercase);
+            string outputString = string.Format("There is a {0} uppercase in the string", counterOfUppercase);
+            Console.WriteLine(outputString);
         }
 
         private static void   printInfoAboutTheStringAccordingToIsContent(string i_InputString)
